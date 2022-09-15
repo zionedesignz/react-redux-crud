@@ -1,9 +1,17 @@
+import { useSelector } from 'react-redux'
+
 import './App.css'
+import ToDoForm from './components/toDoForm'
+import ToDoList from './components/toDoList'
 
 function App() {
+	const toDosState = useSelector(state => state.toDos)
+
 	return (
 		<div className='App'>
-			<h1>Hello World</h1>
+			<h1>To do List</h1>
+			<ToDoForm />
+			<ToDoList />
 		</div>
 	)
 }
