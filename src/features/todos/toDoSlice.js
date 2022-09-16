@@ -18,7 +18,7 @@ const initialState = [
 		id: uuid(),
 		title: 'Take care of Baby',
 		description: 'Play with baby and love he',
-		completed: false
+		completed: true
 	}
 ]
 
@@ -28,10 +28,12 @@ export const toDosSlice = createSlice({
 	reducers: {
 		createToDo: (state, action) => {
 			const { payload } = action
-			return [...state, payload]		
+			return [...state, payload]
 		},
-		readToDos: (state, action) => {},
-		updateToDo: (state, action) => {},
+		updateToDo: (state, action) => {
+			const { payload } = action
+			return state.map(toDo => (toDo.id === payload.id ? payload : toDo))
+		},
 		deleteToDo: (state, action) => {
 			const { payload } = action
 			return state.filter(toDo => toDo.id !== payload)

@@ -1,47 +1,86 @@
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate, useParams } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 
-import { createToDo } from '../features/todos/toDoSlice'
+import { createToDo, updateToDo } from '../features/todos/toDoSlice'
 
 function ToDoForm() {
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
+	const { id } = useParams()
+	const toDosState = useSelector(state => state.toDos)
+
 	const [toDo, setToDo] = useState({
 		title: '',
 		description: '',
-		complete: false
+		completed: false
 	})
 
+	useEffect(() => {
+		if (id && toDosState) {
+			const toDo = toDosState.find(toDo => toDo.id === id)
+			setToDo(toDo)
+		}
+	}, [id, toDosState])
+
 	const handleChange = e => {
-		const key = e.target.name
-		const value = e.target.value
-		setToDo({ ...toDo, [key]: value })
+		const { name, type, checked, value } = e.target
+		const val = type === 'checkbox' ? checked : value
+		setToDo({ ...toDo, [name]: val })
 	}
 
 	const handleSubmit = e => {
 		e.preventDefault()
+		id
+			? dispatch(updateToDo(toDo))
+			: dispatch(createToDo({ ...toDo, id: uuid() }))
 		e.target.reset()
-		dispatch(createToDo({ ...toDo, id: uuid() }))
+		navigate('/')
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<input
-				type='text'
-				name='title'
-				placeholder='title'
-				onChange={handleChange}
-			/>
-			<textarea
-				name='description'
-				placeholder='description'
-				cols='30'
-				rows='10'
-				style={{ resize: 'none' }}
-				onChange={handleChange}
-			></textarea>
-			<button type='submit'>Add To Do</button>
-		</form>
+		toDo && (
+			<form onSubmit={handleSubmit}>
+				<label htmlFor='title'>
+					Title
+					<input
+						type='text'
+						name='title'
+						id='title'
+						placeholder='title'
+						value={toDo.title}
+						onChange={handleChange}
+					/>
+				</label>
+				<label htmlFor='description'>
+					Description
+					<textarea
+						name='description'
+						placeholder='description'
+						id='description'
+						cols='30'
+						rows='10'
+						style={{ resize: 'none' }}
+						value={toDo.description}
+						onChange={handleChange}
+					></textarea>
+				</label>
+				<label htmlFor='completed'>
+					Completed
+					<input
+						type='checkbox'
+						name='completed'
+						id='completed'
+						checked={toDo.completed}
+						onChange={handleChange}
+					/>
+				</label>
+				<button type='submit'>
+					{id ? 'Update To Do' : 'Create To Do'}
+				</button>
+			</form>
+		)
 	)
 }
 
