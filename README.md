@@ -1,5 +1,5 @@
 # react-redux-crud
-To do list with React and Redux and Tailwind CSS
+To do list with React, Redux-toolkit and Tailwind CSS
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
