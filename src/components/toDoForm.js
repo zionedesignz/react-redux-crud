@@ -41,23 +41,32 @@ function ToDoForm() {
 
 	return (
 		toDo && (
-			<form onSubmit={handleSubmit}>
-				<label htmlFor='title'>
+			<form
+				onSubmit={handleSubmit}
+				className='bg-zinc-700 rounded-lg py-3 px-4 grid grid-cols-1 gap-3 md:w-1/2 xl:w-1/3 mx-auto'
+			>
+				<label
+					className='font-bold text-md text-white flex flex-col'
+					htmlFor='title'
+				>
 					Title
 					<input
+						className='text-gray-400 text-basic font-normal rounded bg-zinc-600 border-0 p-2 mt-2 focus:outline-none focus:bg-zinc-500 focus:text-gray-800 hover:bg-zinc-500 hover:text-gray-800'
 						type='text'
 						name='title'
 						id='title'
-						placeholder='title'
 						value={toDo.title}
 						onChange={handleChange}
 					/>
 				</label>
-				<label htmlFor='description'>
+				<label
+					className='font-bold text-md text-white flex flex-col'
+					htmlFor='description'
+				>
 					Description
 					<textarea
+						className='text-gray-400 text-basic font-normal rounded bg-zinc-600 border-0 p-2 mt-2 focus:outline-none focus:bg-zinc-500 hover:bg-zinc-500 hover:text-gray-800 focus:text-gray-800'
 						name='description'
-						placeholder='description'
 						id='description'
 						cols='30'
 						rows='10'
@@ -66,9 +75,13 @@ function ToDoForm() {
 						onChange={handleChange}
 					></textarea>
 				</label>
-				<label htmlFor='completed'>
+				<label
+					className='font-bold text-md text-white flex items-center'
+					htmlFor='completed'
+				>
 					Completed
 					<input
+						className='border-0 py-1 px-4 focus:outline-none hover:border-zinc-800 ml-2'
 						type='checkbox'
 						name='completed'
 						id='completed'
@@ -76,7 +89,10 @@ function ToDoForm() {
 						onChange={handleChange}
 					/>
 				</label>
-				<button type='submit'>
+				<button
+					type='submit'
+					className='text-white text-center text-bold rounded bg-zinc-600 border-0 py-1 px-4 focus:outline-none hover:bg-zinc-800 w-1/2 mx-auto'
+				>
 					{id ? 'Update To Do' : 'Create To Do'}
 				</button>
 			</form>

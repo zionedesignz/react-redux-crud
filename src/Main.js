@@ -1,16 +1,19 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import './App.css'
 import Navigation from './components/Navigation'
 import ToDoForm from './components/ToDoForm'
 import ToDoList from './components/ToDoList'
 
 function Main() {
 	return (
-		<div className='App'>
+		<div className='bg-zinc-900 h-screen text-white mx-auto p-5 sm:p-10 md:p-15'>
 			<BrowserRouter>
-				<Navigation />
-				<h1>To Do List</h1>
+				<div className='grid grid-cols-2 items-center mb-8'>
+					<h1 className='text-4xl font-light justify-self-start w-max uppercase'>
+						to do list
+					</h1>
+					<Navigation />
+				</div>
 				<Routes>
 					<Route path='/' element={<ToDoList />} exact />
 					<Route path='/create' element={<ToDoForm />} exact />
