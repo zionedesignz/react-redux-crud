@@ -1,30 +1,46 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { v4 as uuid } from 'uuid'
 
-const initialState = [
-	{
-		id: uuid(),
-		title: 'Make program',
-		description: 'Make program about fitness',
-		completed: false
-	},
-	{
-		id: uuid(),
-		title: 'Play games',
-		description: 'Play any game with be happy and fun',
-		completed: false
-	},
-	{
-		id: uuid(),
-		title: 'Take care of Baby',
-		description: 'Play with baby and love he',
-		completed: true
-	}
-]
+export const readToDos = createAsyncThunk('toDos/readToDos', async thunkAPI => {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			resolve([
+				{
+					id: uuid(),
+					title: 'Play games',
+					description: 'Play any game with be happy and fun',
+					completed: false,
+					priority: 3
+				},
+				{
+					id: uuid(),
+					title: 'Develop new feature',
+					description: 'New feature for auth users',
+					completed: false,
+					priority: 2
+				},
+				{
+					id: uuid(),
+					title: 'Clean',
+					description: 'Clean dishes and sweep floor',
+					completed: false,
+					priority: 4
+				},
+				{
+					id: uuid(),
+					title: 'Take care of Baby',
+					description: 'Play with the baby and love him very much',
+					completed: true,
+					priority: 1
+				}
+			])
+		}, 500)
+	}).then(data => data)
+})
 
 export const toDosSlice = createSlice({
 	name: 'toDos',
-	initialState: initialState,
+	initialState: [],
 	reducers: {
 		createToDo: (state, action) => {
 			const { payload } = action
@@ -38,9 +54,11 @@ export const toDosSlice = createSlice({
 			const { payload } = action
 			return state.filter(toDo => toDo.id !== payload)
 		}
+	},
+	extraReducers: {
+		[readToDos.fulfilled]: (state, { payload }) => payload
 	}
 })
 
-export const { createToDo, readToDos, updateToDo, deleteToDo } =
-	toDosSlice.actions
+export const { createToDo, updateToDo, deleteToDo } = toDosSlice.actions
 export default toDosSlice.reducer

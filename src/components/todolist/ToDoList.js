@@ -1,12 +1,13 @@
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { deleteToDo } from '../../features/todos/toDoSlice'
+import { deleteToDo, readToDos } from '../../features/todos/toDoSlice'
 import ToDoListContainer from './ToDoListContainer'
 import ToDoShowCompletedButton from './ToDoShowCompletedButton'
 
 const ToDoList = ({ showCompletedToDos, handleToggleShowCompletedToDos }) => {
 	const dispatch = useDispatch()
-	const toDosState = [...useSelector(state => state.toDos)]
+	const toDosState = useSelector(state => state.toDos)
 	const toDosPending = toDosState
 		.filter(toDo => toDo.completed === false)
 		.sort((a, b) => {
@@ -21,6 +22,12 @@ const ToDoList = ({ showCompletedToDos, handleToggleShowCompletedToDos }) => {
 			if (a.priority > b.priority) return 1
 			return 0
 		})
+
+	useEffect(() => {
+		if (toDosState.length === 0) {
+			dispatch(readToDos())
+		}
+	}, [dispatch, toDosState])
 
 	const handleDelete = id => dispatch(deleteToDo(id))
 
