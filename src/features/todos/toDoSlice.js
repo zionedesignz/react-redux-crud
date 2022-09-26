@@ -7,29 +7,29 @@ export const readToDos = createAsyncThunk('toDos/readToDos', async thunkAPI => {
 			resolve([
 				{
 					id: uuid(),
-					title: 'Play games',
-					description: 'Play any game with be happy and fun',
+					title: 'UX corrections',
+					description: 'Apply UX corrections on configuration components for best user experience',
 					completed: false,
 					priority: 3
 				},
 				{
 					id: uuid(),
 					title: 'Develop new feature',
-					description: 'New feature for auth users',
+					description: 'New feature for user auth',
 					completed: false,
 					priority: 2
 				},
 				{
 					id: uuid(),
-					title: 'Clean',
-					description: 'Clean dishes and sweep floor',
+					title: 'Refactor',
+					description: 'Refactor the code on service component',
 					completed: false,
 					priority: 4
 				},
 				{
 					id: uuid(),
-					title: 'Take care of Baby',
-					description: 'Play with the baby and love him very much',
+					title: 'Fix bug',
+					description: 'Fix bug on main layout',
 					completed: true,
 					priority: 1
 				}
