@@ -1,9 +1,9 @@
 const ToDoCardTitle = ({ title, priority }) => {
 	const priorityColors = {
-		1: { bg: 'bg-red-700', txt: 'text-red-200' },
-		2: { bg: 'bg-orange-600', txt: 'text-orange-200' },
-		3: { bg: 'bg-green-600', txt: 'text-green-200' },
-		4: { bg: 'bg-blue-500', txt: 'text-blue-200' }
+		1: { bg: 'bg-red-700', txt: 'text-red-100' },
+		2: { bg: 'bg-orange-600', txt: 'text-orange-100' },
+		3: { bg: 'bg-green-600', txt: 'text-green-100' },
+		4: { bg: 'bg-blue-500', txt: 'text-blue-100' }
 	}
 
 	return (

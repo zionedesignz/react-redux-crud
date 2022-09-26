@@ -8,7 +8,7 @@ const NavigationLink = ({ path, name }) => {
 			className={`text-right text-bold text-xl ${
 				pathname === path
 					? 'text-white underline underline-offset-4'
-					: 'text-zinc-500 no-underline'
+					: 'text-zinc-400 no-underline'
 			} focus:outline-none hover:text-white`}
 		>
 			<Link to={path}>{name}</Link>
