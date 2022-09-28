@@ -14,8 +14,8 @@ function Main() {
 	return (
 		<div className='bg-zinc-900 min-h-screen text-white mx-auto p-5 sm:p-10 md:p-15'>
 			<BrowserRouter>
-				<header className='grid grid-cols-2 items-center mb-4'>
-					<h1 className='text-4xl font-light justify-self-start w-max'>
+				<header className='grid grid-cols-auto grid-rows-auto items-center mb-4'>
+					<h1 className='row-start-1 row-span-1 column-start-1 column-span-2 text-4xl font-light w-max justify-self-start sm:row-start-1 sm:row-span-2 sm:column-start-1 sm:column-span-1'>
 						TO DO LIST
 					</h1>
 					<Navigation />

@@ -11,7 +11,9 @@ const NavigationLink = ({ path, name }) => {
 					: 'text-zinc-400 no-underline'
 			} focus:outline-none hover:text-white`}
 		>
-			<Link to={path}>{name}</Link>
+			<Link className='whitespace-nowrap' to={path}>
+				{name}
+			</Link>
 		</li>
 	)
 }
