@@ -9,7 +9,7 @@ import ToDoListContainerStatus from './ToDoListContainerStatus'
 const ToDoListContainer = ({ toDos, type, show = true, handleDelete }) => (
 	<div
 		className={`${
-			show ? 'opacity-100 h-max' : 'opacity-0 h-0'
+			show ? 'opacity-100 h-max' : 'opacity-0 h-0 hidden'
 		} transition-opacity duration-200`}
 	>
 		<ToDoListContainerStatus toDos={toDos} type={type} />
