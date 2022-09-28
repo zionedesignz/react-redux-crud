@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import Main from './Main'
 import { store } from './app/store'
 import './index.css'
+import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
@@ -14,3 +15,5 @@ root.render(
 		</Provider>
 	</React.StrictMode>
 )
+
+serviceWorkerRegistration.register()
