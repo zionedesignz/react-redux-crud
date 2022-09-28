@@ -7,7 +7,7 @@ const Input = ({ type, id, value, handleChange }) => (
 	>
 		{id}
 		<input
-			className='text-gray-400 text-basic font-normal rounded bg-zinc-600 border-0 p-2 focus:outline-none focus:bg-zinc-500 focus:text-gray-800 hover:bg-zinc-500 hover:text-gray-800'
+			className='text-gray-300 text-basic font-normal rounded bg-zinc-600 border-0 p-2 focus:outline-none focus:bg-zinc-500 focus:text-gray-800 hover:bg-zinc-500 hover:text-gray-800'
 			type={type}
 			name={id}
 			id={id}
