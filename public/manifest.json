@@ -35,7 +35,8 @@
      {
       "src": "/apple-icon-144x144.png",
       "sizes": "144x144",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
      },
      {
       "src": "/apple-icon-152x152.png",
@@ -57,7 +58,8 @@
       "src": "/android-icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "density": "4.0"
+      "density": "4.0",
+      "purpose": "any maskable"
      }
   ],
   "start_url": "/",
@@ -66,11 +68,5 @@
   "theme_color": "#3F3F46",
   "background_color": "#18181B",
   "description": "Web application of To Do List",
-  "prefer_related_applications": true,
-  "related_applications": [
-    {
-      "platform": "play",
-      "id": "com.google.samples.apps.iosched"
-    }
-  ]
+  "prefer_related_applications": true
 }
