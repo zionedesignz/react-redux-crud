@@ -8,7 +8,7 @@ const Select = ({ id, value, options, handleChange }) => (
 			className='text-gray-300 text-basic font-normal rounded bg-zinc-600 border-0 p-2 focus:outline-none focus:bg-zinc-500 hover:bg-zinc-500 hover:text-gray-800 focus:text-gray-800'
 			name={id}
 			id={id}
-			defaultValue={value}
+			value={value}
 			onChange={handleChange}
 		>
 			{Object.entries(options).map(([key, value]) => (
