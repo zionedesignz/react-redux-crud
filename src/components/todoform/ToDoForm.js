@@ -10,25 +10,27 @@ import Select from '../global/Select'
 import TextArea from '../global/TextArea'
 import ToDoFormError from './ToDoFormError'
 
+const priorityOptions = {
+	1: 'Critical',
+	2: 'High',
+	3: 'Medium',
+	4: 'Low'
+}
+const initialState = {
+	id: uuid(),
+	title: '',
+	description: '',
+	completed: false,
+	priority: 4
+}
+
 const ToDoForm = () => {
-	const priorityOptions = {
-		1: 'Critical',
-		2: 'High',
-		3: 'Medium',
-		4: 'Low'
-	}
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 	const { id: pathId } = useParams()
 	const toDosState = useSelector(state => state.toDos)
 
-	const [toDo, setToDo] = useState({
-		id: uuid(),
-		title: '',
-		description: '',
-		completed: false,
-		priority: 4
-	})
+	const [toDo, setToDo] = useState(initialState)
 	const [error, setError] = useState()
 
 	useEffect(() => {
@@ -36,6 +38,7 @@ const ToDoForm = () => {
 			const toDo = toDosState.find(toDo => toDo.id === pathId)
 			setToDo(toDo)
 		}
+		if (!pathId) setToDo(initialState)
 	}, [pathId, toDosState])
 
 	const handleChange = e => {
